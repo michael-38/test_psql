@@ -1,5 +1,6 @@
 const pg = require("pg");
 const settings = require("./settings"); // looks for settings.json
+const knex = require('knex')
 let args = process.argv.slice(2);
 
 const client = new pg.Client({
@@ -23,9 +24,15 @@ client.connect((err) => {
         if (err) {
             return console.error("error running query", err);
         }
-        console.log(`Found ${result.rows.length} person(s) by the name ${args}`);
-        console.log(`id ${result.rows[0].id}: ${result.rows[0].first_name} ${result.rows[0].last_name}, born ${result.rows[0].birthdate}`);
-        client.end();
+        if (result.rows.length > 0) {
+            // console.log(result.rows.length)
+            console.log(`Found ${result.rows.length} person(s) by the name ${args}`);
+            console.log(`id ${result.rows[0].id}: ${result.rows[0].first_name} ${result.rows[0].last_name}, born ${result.rows[0].birthdate}`);
+            client.end();
+        } else {
+            console.log("nothing found");
+            client.end();
+        }
     });
     console.log("Searching...");
 });
