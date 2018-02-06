@@ -1,0 +1,22 @@
+{
+  "name": "test_psql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-38/test_psql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michael-38/test_psql/issues"
+  },
+  "homepage": "https://github.com/michael-38/test_psql#readme",
+  "dependencies": {
+    "pg": "^7.4.1"
+  }
+}
