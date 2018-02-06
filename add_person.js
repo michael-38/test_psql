@@ -6,10 +6,14 @@ module.exports = function (knex) {
             if (err) {
                 return console.log("insert error: ", err);
             }
+            knex.select().table('famous_people').asCallback(function (err, result) {
+                if (err) {
+                    return console.error("Query Error: ", err);
+                }
+                console.log(result);
+            })
+            knex.destroy();
         })
-
-
-
     }
     return {
         addPerson: addPerson,
